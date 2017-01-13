@@ -1,5 +1,5 @@
-# Schema for the theme setting configuration file of the MARS theme.
+# Schema for the theme setting configuration file of the THEMETITLE theme.
 
-mars.settings:
+THEMENAME.settings:
   type: theme_settings
-  label: 'MARS settings'
+  label: 'THEMETITLE settings'

@@ -17,7 +17,6 @@ gulp.task('imagemin', function () {
         .pipe(gulp.dest('./themes/custom/mars/images'));
 });
 
-
 gulp.task('sass', function () {
   gulp.src('./themes/custom/mars/sass/**/*.scss')
     .pipe(sourcemaps.init())
@@ -26,7 +25,6 @@ gulp.task('sass', function () {
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('./themes/custom/mars/css'));
 });
-
 
 gulp.task('uglify', function() {
   gulp.src('./themes/custom/mars/lib/*.js')
@@ -39,7 +37,7 @@ gulp.task('watch', function(){
 
     gulp.watch('./themes/custom/mars/sass/**/*.scss', ['sass']);
     gulp.watch('./themes/custom/mars/lib/*.js', ['uglify']);
-    gulp.watch(['./themes/custom/mars/css/style.css', './themes/custom/endymion/**/*.twig', './themes/custom/endymion/js/*.js'], function (files){
+    gulp.watch(['./themes/custom/mars/css/style.css', './themes/custom/mars/**/*.twig', './themes/custom/mars/js/*.js'], function (files){
         livereload.changed(files)
     });
 });
