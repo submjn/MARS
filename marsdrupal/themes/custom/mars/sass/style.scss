@@ -1,3 +1,6 @@
+// Branding
+@import "branding/settings";
+@import "branding/helpers";
 // Default variables.
 @import "default-variables";
 
@@ -6,3 +9,4 @@
 
 // Base-theme overrides.
 @import 'overrides';
+@import 'component/custom/headerTop';
