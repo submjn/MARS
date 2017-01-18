@@ -10,9 +10,9 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul id="testMenu" {{ attributes.addClass('menu', 'nav', 'navbar-nav') }}>
+      <ul id="menuMain" {{ attributes.addClass('menu', 'nav', 'navbar-nav') }}>
     {% else %}
-      <ul id="testMenu" {{ attributes.addClass('dropdown-menu') }}>
+      <ul id="menuMain" {{ attributes.addClass('dropdown-menu') }}>
     {% endif %}
     {% for item in items %}
       {%

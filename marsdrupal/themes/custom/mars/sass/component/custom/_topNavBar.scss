@@ -1,0 +1,36 @@
+#topNavbar {
+  background-color: $AMSGrassGreen;
+  border: 0;
+  margin-bottom: 4px;
+}
+
+#topNavigation {
+  padding: 0;
+}
+
+#menuTopNavigation {
+  background-color: $AMSSpringGreen;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  li {
+    border-left:1px solid $AMSDarkGreen;
+    a {
+      color: $AMSDarkGreen;
+    }
+    &:first-child {
+      border-left: 0;
+    }
+    &:hover {
+      background-color: $AMSDarkGreen;
+      &:first-child {
+        border-top-left-radius: 10px;
+      }
+      &:last-child {
+        border-top-right-radius: 10px;
+      }
+      a {
+        color: $AMSWhite;
+      }
+    }
+  }
+}
