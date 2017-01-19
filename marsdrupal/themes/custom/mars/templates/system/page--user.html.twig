@@ -1,40 +1,6 @@
 {# Frontpage: Page Wrapper #}
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 
-{# Header #}
-<headerGroup>
-    {% if page.header %}
-        {% block header %}
-            <header id="headerTop" role="banner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12" role="heading">
-                            {{ page.header }}
-                        </div>
-                    </div>
-                </div>
-            </header>
-        {% endblock %}
-    {% endif %}
-    {# Navbar - Primary and Seconday#}
-    {% if page.navigation or page.navigation_collapsible %}
-        {% block navbar %}
-            {%
-            set navbar_classes = [
-            'navbar',
-            theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
-            ]
-            %}
-            {#theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,#}
-            {# templates/navigation/nav-header-top.html.twig #}
-            {% include directory ~ '/templates/navigation/nav--header-top.html.twig' %}
-            {# templates/navigation/nav-header-bottom.html.twig #}
-            {% include directory ~ '/templates/navigation/nav--header-bottom.html.twig' %}
-
-        {% endblock %}
-    {% endif %}
-</headerGroup>
-{# Page Top - Main, Highlighted, content #}
 {% block main %}
     <div role="main" class="main-container {{ container }} js-quickedit-main-content">
         <div class="row">
@@ -81,14 +47,5 @@
         <div class="page-bottom {{ container }}" role="contentinfo">
             {{ page.bottom }}
         </div>
-    {% endblock %}
-{% endif %}
-
-{# Footer #}
-{% if page.footer %}
-    {% block footer %}
-        <footer class="footer {{ container }}" role="contentinfo">
-            {{ page.footer }}
-        </footer>
     {% endblock %}
 {% endif %}
