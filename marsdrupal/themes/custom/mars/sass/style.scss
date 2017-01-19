@@ -9,7 +9,9 @@
 
 // Base-theme overrides.
 @import 'overrides';
+@import 'component/custom/block-grid';
 @import 'component/custom/header-top';
 @import 'component/custom/top-nav-bar';
 @import 'component/custom/bottom-nav-bar';
 @import 'component/custom/search-input';
+@import 'component/custom/footer-menu';
