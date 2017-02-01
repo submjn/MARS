@@ -23,4 +23,3 @@ regions:
 libraries:
   - 'mars/global-styling'
   - 'mars/bootstrap-scripts'
-#  - 'flexslider'
