@@ -10,8 +10,9 @@
 // Bootstrap Override variables.
 @import "branding/default-variables";
 
- //@todo these should be their own CSS files and only included when
- //specific Drupal libraries are used.
+
+//@todo these should be their own CSS files and only included when
+//specific Drupal libraries are used.
 //@import "component/core/alert";
 //@import "component/core/ajax";
 //@import "component/core/field";
@@ -52,3 +53,11 @@
 // Pages
 @import "pages/home";
 @import "pages/api";
+
+
+.layout-container {
+  @include gradient-background(#2A5B0B, #fff);
+}
+.content-section-main {
+  background: #fff;
+}
