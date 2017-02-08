@@ -1,0 +1,23 @@
+#breadcrumbBar {
+  .row {
+    margin: 0;
+    background: darken($AMSGrassGreen, 10%);
+  }
+}
+
+.breadcrumb-bar {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    color: #fff;
+    padding:0;
+    padding-top: 8px;
+  }
+}
+
+.socIconWrap {
+  text-align: right;
+  padding: 6px 0;
+}
