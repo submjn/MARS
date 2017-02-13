@@ -5,19 +5,28 @@
   }
 }
 
-.breadcrumb-bar {
+.social-icons {
+  text-align: right;
+  margin: 0 -15px;
   ul {
-    margin: 0;
-    padding: 0;
-  }
-  li {
-    color: #fff;
-    padding:0;
-    padding-top: 8px;
+    margin: 5px;
+    .text {
+      color: #fff;
+    }
   }
 }
 
-.socIconWrap {
-  text-align: right;
-  padding: 6px 0;
+.breadcrumb {
+  background: transparent;
+  margin: 0;
+  padding: 15px 0;
+  li {
+    color: #fff;
+    a {
+      color: #fff;
+    }
+  }
+  & > .active {
+    color: #fff;
+  }
 }

@@ -44,22 +44,15 @@
 @import "component/overrides";
 
 // Base-theme overrides.
-@import 'site/_global';
-@import 'site/_header-top';
-@import 'site/_top-nav-bar';
-@import 'site/_bottom-nav-bar';
-@import 'site/_breadcrumb-bar';
-@import 'site/_search-input';
-@import 'site/_footer-menu';
+@import 'site/global';
+@import 'site/header-top';
+@import 'site/top-nav-bar';
+@import 'site/bottom-nav-bar';
+@import 'site/breadcrumb-bar';
+@import 'site/search-input';
+@import 'site/sidebar';
+@import 'site/footer-menu';
 
 // Pages
 @import "pages/home";
 @import "pages/api";
-
-
-.layout-container {
-  @include gradient-background(#2A5B0B, #fff);
-}
-.content-section-main {
-  background: #fff;
-}
