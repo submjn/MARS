@@ -1,0 +1,12 @@
+<header id="breadcrumbBar" role="navigation">
+      <div class="container">
+        <div class="row">
+
+            {% if page.breadcrumb %}
+                {% block breadcrumb %}
+                    {{ page.breadcrumb }}
+                {% endblock %}
+            {% endif %}
+        </div>
+    </div>
+</header>

@@ -1,96 +1,124 @@
 {# Frontpage: Page Wrapper #}
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 
-{# Header #}
-<headerGroup>
-    {% if page.header %}
-        {% block header %}
-            <header id="headerTop" role="banner">
-                <div class="container">
+<div id="page" class="layout-container">
+    {# Header #}
+    <headerGroup>
+        {% if page.header %}
+            {% block header %}
+                <header id="headerTop" role="banner">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12" role="heading">
+                                {{ page.header }}
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            {% endblock %}
+        {% endif %}
+        {# Navbar - Primary and Seconday#}
+        {% if page.navigation or page.navigation_collapsible %}
+            {% block navbar %}
+                {%
+                set navbar_classes = [
+                'navbar',
+                theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
+                ]
+                %}
+                {#theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,#}
+                {# templates/navigation/nav-header-top.html.twig #}
+                {% include directory ~ '/templates/navigation/nav--header-top.html.twig' %}
+                {# templates/navigation/nav-header-bottom.html.twig #}
+                {% include directory ~ '/templates/navigation/nav--header-bottom.html.twig' %}
+                {# templates/navigation/nav-header-bottom.html.twig #}
+                {% include directory ~ '/templates/navigation/nav--breadcrumb.html.twig' %}
+
+            {% endblock %}
+        {% endif %}
+    </headerGroup>
+
+    <article>
+        {% block main %}
+            <main role="main" class="main-container {{ container }} js-quickedit-main-content">
+                <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+                <div class="content-wrapper">
+                    {# Content #}
+                    {%
+                        set sub_content_classes = [
+                            'sub_content-section',
+                            page.sidebar_right ? 'col-sm-9',
+                            page.sidebar_right is empty ? 'col-sm-12'
+                        ]
+                    %}
+                    {%
+                        set content_classes = [
+                            'content-section-main',
+                            page.sidebar_left ? 'col-sm-9',
+                            page.sidebar_left is empty ? 'col-sm-12'
+                        ]
+                    %}
+
                     <div class="row">
-                        <div class="col-sm-12" role="heading">
-                            {{ page.header }}
+                        {% if page.sidebar_left %}
+                            <div class="col-sm-3">
+                                {{ page.sidebar_left }}
+                            </div>
+                        {% endif %}
+
+                        <div {{ content_attributes.addClass(content_classes) }}>
+                            {# Page Top #}
+                            {# Highlighted #}
+                            {% if page.highlighted %}
+                                {% block highlighted %}
+                                    <div class="highlighted">{{ page.highlighted }}</div>
+                                {% endblock %}
+                            {% endif %}
+
+                            <div class="row">
+                                <div {{ attributes.addClass(sub_content_classes) }}>
+                                    {# Content #}
+                                    {% block content %}
+                                    <div class="layout-content {{ sidebarClass }}">
+                                        {{ page.content }}
+                                        </div>{# /.layout-content #}
+                                    {% endblock %}
+                                </div>
+
+                                {% if page.sidebar_right %}
+                                    <div class="col-sm-3">
+                                        {{ page.sidebar_right }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
-            </header>
+            </main>
         {% endblock %}
-    {% endif %}
-    {# Navbar - Primary and Seconday#}
-    {% if page.navigation or page.navigation_collapsible %}
-        {% block navbar %}
-            {%
-            set navbar_classes = [
-            'navbar',
-            theme.settings.navbar_inverse ? 'navbar-inverse' : 'navbar-default',
-            ]
-            %}
-            {#theme.settings.navbar_position ? 'navbar-' ~ theme.settings.navbar_position|clean_class : container,#}
-            {# templates/navigation/nav-header-top.html.twig #}
-            {% include directory ~ '/templates/navigation/nav--header-top.html.twig' %}
-            {# templates/navigation/nav-header-bottom.html.twig #}
-            {% include directory ~ '/templates/navigation/nav--header-bottom.html.twig' %}
+    </article>
 
-        {% endblock %}
-    {% endif %}
-</headerGroup>
-{# Page Top - Main, Highlighted, content #}
-{% block main %}
-    <div role="main" class="main-container {{ container }} js-quickedit-main-content">
-        <div class="row">
-
-            {# Content #}
-            {%
-            set content_classes = [
-            page.sidebar_first and page.sidebar_second ? 'col-sm-6',
-            page.sidebar_first and page.sidebar_second is empty ? 'col-sm-9',
-            page.sidebar_second and page.sidebar_first is empty ? 'col-sm-9',
-            page.sidebar_first is empty and page.sidebar_second is empty ? 'col-sm-12'
-            ]
-            %}
-            <section{{ content_attributes.addClass(content_classes) }}>
-
-                {# Highlighted #}
-                {% if page.highlighted %}
-                    {% block highlighted %}
-                        <div class="highlighted">{{ page.highlighted }}</div>
-                    {% endblock %}
-                {% endif %}
-
-                {# Action Links #}
-                {% if action_links %}
-                    {% block action_links %}
-                        <ul class="action-links">{{ action_links }}</ul>
-                    {% endblock %}
-                {% endif %}
-
-                {# Content #}
-                {% block content %}
-                    <a id="main-content"></a>
-                    {{ page.content }}
-                {% endblock %}
-            </section>
-
-        </div>
-    </div>
-{% endblock %}
-
-{# Page Bottom #}
-{% if page.page_bottom %}
-    {% block bottom %}
-        <div class="page-bottom {{ container }}" role="contentinfo">
-            {{ page.bottom }}
-        </div>
-    {% endblock %}
-{% endif %}
-
-{# Footer #}
-{% if page.footer %}
-    {% block footer %}
-        <footer id="mainFooter" class="footer" role="contentinfo">
-            <div class="{{ container }}">
-                {{ page.footer }}
+    {# Page Bottom #}
+    {% if page.front_bottom %}
+        {% block bottom %}
+            <div class="page-bottom" role="contentinfo">
+                {{ page.front_bottom }}
             </div>
-        </footer>
-    {% endblock %}
-{% endif %}
+        {% endblock %}
+    {% endif %}
+
+    {# Footer #}
+    {% if page.footer %}
+        {% block footer %}
+            <footer id="mainFooter" class="footer" role="contentinfo">
+                <div class="{{ container }}">
+                    {{ page.footer }}
+                </div>
+            </footer>
+        {% endblock %}
+    {% endif %}
+
+</div>
+{# /.layout-container #}

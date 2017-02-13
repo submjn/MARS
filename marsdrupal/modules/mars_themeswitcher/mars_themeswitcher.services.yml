@@ -1,5 +1,0 @@
-services:
-  theme.negotiator.mars_themeswitcher:
-    class: Drupal\mars_themeswitcher\Theme\MarsThemeswitcherNegotiator
-    tags:
-      - { name: theme_negotiator, priority: 10 }

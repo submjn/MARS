@@ -1,7 +1,7 @@
 {# Frontpage: Page Wrapper #}
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 
-<div class="layout-container">
+<div id="homePage" class="layout-container">
     {# Header #}
     <headerGroup>
         {% if page.header %}
@@ -31,66 +31,88 @@
                 {% include directory ~ '/templates/navigation/nav--header-top.html.twig' %}
                 {# templates/navigation/nav-header-bottom.html.twig #}
                 {% include directory ~ '/templates/navigation/nav--header-bottom.html.twig' %}
+                {# templates/navigation/nav-header-bottom.html.twig #}
+                {% include directory ~ '/templates/navigation/nav--breadcrumb.html.twig' %}
 
             {% endblock %}
         {% endif %}
     </headerGroup>
-    {% block main %}
-        <main role="main" class="main-container {{ container }} js-quickedit-main-content">
-            <div class="row">
-                {# Content #}
-                {%
-                set content_classes = [
-                page.sidebar_first and page.sidebar_second ? 'col-sm-6',
-                page.sidebar_first and page.sidebar_second is empty ? 'col-sm-9',
-                page.sidebar_second and page.sidebar_first is empty ? 'col-sm-9',
-                page.sidebar_first is empty and page.sidebar_second is empty ? 'col-sm-12'
-                ]
-                %}
-                <section{{ content_attributes.addClass(content_classes) }}>
 
-                    {# Highlighted #}
-                    {% if page.highlighted %}
-                        {% block highlighted %}
-                            <div class="highlighted">{{ page.highlighted }}</div>
-                        {% endblock %}
-                    {% endif %}
-
-                    {# Action Links #}
-                    {% if action_links %}
-                        {% block action_links %}
-                            <ul class="action-links">{{ action_links }}</ul>
-                        {% endblock %}
-                    {% endif %}
-
-                    <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
-
-                    <div class="page-top-section row">
-                        <div class="content-bottom-1 col-md-4 col-sm-4">
-                            {{ page.col_One_third }}
-                        </div>
-                        <div class="content-bottom-2 col-md-8 col-sm-8">
-                            {{ page.col_two_third }}
-                        </div>
-                    </div>
-
+    <article>
+        {% block main %}
+            <main role="main" class="main-container {{ container }} js-quickedit-main-content">
+                <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
+                <div class="content-wrapper">
                     {# Content #}
-                    {% block content %}
+                    {%
+                    set content_classes = [
+                    'content-section-main',
+                    page.sidebar_first and page.sidebar_second ? 'col-sm-6',
+                    page.sidebar_first and page.sidebar_second is empty ? 'col-sm-9',
+                    page.sidebar_second and page.sidebar_first is empty ? 'col-sm-9',
+                    page.sidebar_first is empty and page.sidebar_second is empty ? 'col-sm-12'
+                    ]
+                    %}
+                    <section{{ content_attributes.addClass(content_classes) }}>
 
+                        {# Highlighted #}
+                        {% if page.highlighted %}
+                            {% block highlighted %}
+                                <div class="highlighted">{{ page.highlighted }}</div>
+                            {% endblock %}
+                        {% endif %}
 
+                        {# Action Links #}
+                        {% if action_links %}
+                            {% block action_links %}
+                                <ul class="action-links">{{ action_links }}</ul>
+                            {% endblock %}
+                        {% endif %}
+
+                        <div class="page-top-section row">
+                            {% if page.col_One_third %}
+                                {% block colOneThird %}
+                                    <div class="content-bottom-1 col-md-4 col-sm-4">
+                                        {# templates/partials/frontpage/block--mars-search.html.twig #}
+                                        {#{% include directory ~ '/templates/partials/frontpage/block--mars-search.html.twig' %}#}
+                                        {{ page.col_One_third }}
+                                    </div>
+                                {% endblock %}
+                            {% endif %}
+                            {% if page.col_two_third %}
+                                {% block colTwoThird %}
+                                    <div class="content-bottom-2 col-md-8 col-sm-8">
+                                        {{ page.col_two_third }}
+                                    </div>
+                                {% endblock %}
+                            {% endif %}
+                        </div>
+
+                        {# Page Top #}
+                        {% if page.front_top %}
+                            {% block top %}
+                                <div class="page-top" role="contentinfo">
+                                    {{ page.front_top }}
+                                </div>
+                            {% endblock %}
+                        {% endif %}
+
+                        {# Content #}
+                        {% block content %}
                         <div class="layout-content {{ sidebarClass }}">
                             {{ page.content }}
-                        </div>{# /.layout-content #}
-                    {% endblock %}
-                </section>
+                            </div>{# /.layout-content #}
+                        {% endblock %}
+                    </section>
+                </div>
+            </main>
+        {% endblock %}
+    </article>
 
-            </div>
-        </main>
-    {% endblock %}
     {# Page Bottom #}
     {% if page.front_bottom %}
         {% block bottom %}
-            <div class="page-bottom {{ container }}" role="contentinfo">
+            <div class="page-bottom" role="contentinfo">
                 {{ page.front_bottom }}
             </div>
         {% endblock %}
@@ -106,5 +128,6 @@
             </footer>
         {% endblock %}
     {% endif %}
+
 </div>
 {# /.layout-container #}

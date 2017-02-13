@@ -111,3 +111,7 @@
 .action-link {
   @include action-link();
 }
+
+.right-float {
+  float: right!important;
+}

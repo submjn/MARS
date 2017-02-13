@@ -1,7 +1,8 @@
 #topNavbar {
-  background-color: $AMSGrassGreen;
+  background-color: transparent; //$AMSGrassGreen;
   border: 0;
-  margin-bottom: 4px;
+  margin-bottom: 0; //4px;
+  border-radius: 0;
 }
 
 #topNavigation {
@@ -9,6 +10,7 @@
 }
 
 .menu-top-navigation {
+
   &.nav {
     background-color: $AMSSpringGreen;
     border-top-left-radius: 10px;
@@ -24,9 +26,18 @@
       }
       &:first-child {
         border-left: 0;
+        background: $AMSDarkGreen;
+        border-top-left-radius: 10px;
+        a {
+          color: #fff!important;
+        }
         .dropdown-menu {
           left: 0;
         }
+      }
+      &:last-child {
+        border-right:0;
+        border-top-right-radius: 10px;
       }
       &.open, &.active, &:hover, &:focus {
         background-color: $AMSDarkGreen !important;

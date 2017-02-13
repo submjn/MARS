@@ -37,7 +37,7 @@ gulp.task('watch', function(){
 
     gulp.watch('./themes/custom/mars/sass/**/*.scss', ['sass']);
     gulp.watch('./themes/custom/mars/lib/*.js', ['uglify']);
-    gulp.watch(['./themes/custom/mars/css/style.css', './themes/custom/mars/**/*.twig', './themes/custom/mars/js/*.js'], function (files){
+    gulp.watch(['./themes/custom/mars/css/*.css', './themes/custom/mars/**/*.twig', './themes/custom/mars/js/*.js'], function (files){
         livereload.changed(files)
     });
 });

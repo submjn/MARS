@@ -10,6 +10,7 @@ regions:
   header: 'Top Bar'
   navigation: 'Navigation'
   navigation_collapsible: 'Navigation (Collapsible)'
+  breadcrumb: 'Breadcrumbs'
   highlighted: 'Highlighted'
   col_One_third: 'Column 13'
   col_two_third: 'Column 23'
@@ -17,10 +18,10 @@ regions:
   content: 'Content'
   front_bottom: 'Front Page bottom'
   footer: 'Footer'
-
+  sidebar_left: 'Sidebar Left'
+  sidebar_right: 'Sidebar Right'
   fron-banner: 'Front Banner'
 
 libraries:
   - 'mars/global-styling'
   - 'mars/bootstrap-scripts'
-#  - 'flexslider'
