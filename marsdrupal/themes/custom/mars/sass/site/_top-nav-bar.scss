@@ -28,6 +28,9 @@
         border-left: 0;
         background: $AMSDarkGreen;
         border-top-left-radius: 10px;
+        &:hover {
+          text-decoration: underline;
+        }
         a {
           color: #fff!important;
         }

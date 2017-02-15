@@ -9,8 +9,8 @@
  * @ingroup templates
  */
 #}
-{% if breadcrumb %}
-    <div class="col-sm-6">
+<div class="col-sm-6">
+    {% if breadcrumb %}
         <ol class="breadcrumb">
             {% for item in breadcrumb %}
                 <li {{ item.attributes }}>
@@ -22,5 +22,11 @@
                 </li>
             {% endfor %}
         </ol>
-    </div>
-{% endif %}
+    {% else %}
+        <ol class="breadcrumb">
+            <li>
+                <a href="/mars-home">Mars Home</a>
+            </li>
+        </ol>
+    {% endif %}
+</div>
