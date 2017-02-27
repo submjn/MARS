@@ -30,7 +30,7 @@
                 {# templates/navigation/nav-header-top.html.twig #}
                 {% include directory ~ '/templates/navigation/nav--header-top.html.twig' %}
                 {# templates/navigation/nav-header-bottom.html.twig #}
-                {% include directory ~ '/templates/navigation/nav--header-bottom.html.twig' %}
+                {#{% include directory ~ '/templates/navigation/nav--header-bottom.html.twig' %}#}
                 {# templates/navigation/nav-header-bottom.html.twig #}
                 {% include directory ~ '/templates/navigation/nav--breadcrumb.html.twig' %}
 
@@ -47,54 +47,71 @@
                     {%
                         set sub_content_classes = [
                             'sub_content-section',
-                            page.sidebar_right ? 'col-sm-9',
-                            page.sidebar_right is empty ? 'col-sm-12'
+                            page.sidebar_right ? 'col-md-8',
+                            page.sidebar_right is empty ? 'col-md-12'
                         ]
                     %}
                     {%
                         set content_classes = [
                             'content-section-main',
-                            page.sidebar_left ? 'col-sm-9',
-                            page.sidebar_left is empty ? 'col-sm-12'
+                            page.sidebar_left ? 'col-md-9 col-md-push-3',
+                            page.sidebar_left is empty ? 'col-md-12'
                         ]
                     %}
 
                     <div class="row">
-                        {% if page.sidebar_left %}
-                            <div class="col-sm-3">
-                                {{ page.sidebar_left }}
+                        <div {{ attributes.addClass(sub_content_classes) }}>
+                            {# Content #}
+                            {% block content %}
+                            <div class="layout-content {{ sidebarClass }}">
+                                {{ page.content }}
+                                </div>{# /.layout-content #}
+                            {% endblock %}
+                        </div>
+
+                        {% if page.sidebar_right %}
+                            <div class="col-md-4">
+                                {{ page.sidebar_right }}
                             </div>
                         {% endif %}
+                    </div>
+                    {#<div class="row">#}
 
-                        <div {{ content_attributes.addClass(content_classes) }}>
+                        {#<div {{ content_attributes.addClass(content_classes) }}>#}
                             {# Page Top #}
                             {# Highlighted #}
-                            {% if page.highlighted %}
-                                {% block highlighted %}
-                                    <div class="highlighted">{{ page.highlighted }}</div>
-                                {% endblock %}
-                            {% endif %}
+                            {#{% if page.highlighted %}#}
+                                {#{% block highlighted %}#}
+                                    {#<div class="highlighted">{{ page.highlighted }}</div>#}
+                                {#{% endblock %}#}
+                            {#{% endif %}#}
 
-                            <div class="row">
-                                <div {{ attributes.addClass(sub_content_classes) }}>
+                            {#<div class="row">#}
+                                {#<div {{ attributes.addClass(sub_content_classes) }}>#}
                                     {# Content #}
-                                    {% block content %}
-                                    <div class="layout-content {{ sidebarClass }}">
-                                        {{ page.content }}
-                                        </div>{# /.layout-content #}
-                                    {% endblock %}
-                                </div>
+                                    {#{% block content %}#}
+                                    {#<div class="layout-content {{ sidebarClass }}">#}
+                                        {#{{ page.content }}#}
+                                        {#</div>#}{# /.layout-content #}
+                                    {#{% endblock %}#}
+                                {#</div>#}
 
-                                {% if page.sidebar_right %}
-                                    <div class="col-sm-3">
-                                        {{ page.sidebar_right }}
-                                    </div>
-                                {% endif %}
-                            </div>
+                                {#{% if page.sidebar_right %}#}
+                                    {#<div class="col-md-4">#}
+                                        {#{{ page.sidebar_right }}#}
+                                    {#</div>#}
+                                {#{% endif %}#}
+                            {#</div>#}
 
+                        {#</div>#}
 
-                        </div>
-                    </div>
+                        {#{% if page.sidebar_left %}#}
+                            {#<div class="col-md-3 col-md-pull-9">#}
+                                {#{{ page.sidebar_left }}#}
+                            {#</div>#}
+                        {#{% endif %}#}
+
+                    {#</div>#}
                 </div>
             </main>
         {% endblock %}
