@@ -59,6 +59,13 @@
                         ]
                     %}
 
+                    {# Page Top #}
+                    {# Highlighted #}
+                    {% if page.highlighted %}
+                        {% block highlighted %}
+                            <div class="highlighted">{{ page.highlighted }}</div>
+                        {% endblock %}
+                    {% endif %}
                     <div class="row">
                         <div {{ attributes.addClass(sub_content_classes) }}>
                             {# Content #}

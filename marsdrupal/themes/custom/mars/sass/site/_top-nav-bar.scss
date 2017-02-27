@@ -26,14 +26,14 @@
       }
       &:first-child {
         border-left: 0;
-        background: $AMSDarkGreen;
+        //background: $AMSDarkGreen;
         border-top-left-radius: 10px;
         &:hover {
           text-decoration: underline;
         }
-        a {
-          color: #fff!important;
-        }
+        //a {
+        //  color: #fff!important;
+        //}
         .dropdown-menu {
           left: 0;
         }

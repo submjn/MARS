@@ -14,7 +14,12 @@
     & > .row {
       background: #fff;
       margin: 0;
-      padding: 15px 0;
+      padding: 15px;
     }
   }
+}
+
+.highlighted {
+  max-height: 300px;
+  overflow: hidden;
 }
