@@ -2,12 +2,32 @@
 // naming color -- http://www.color-blindness.com/color-name-hue/
 //------------
 // Legacy Colors
+$legacy-text-color        : #282828;
+$legacy-light-text-color  : #565656;
+$legacy-spring-green      : #CDD860; // AMSSpringGreen
+$legacy-olive-green       : #73791C; // AMSOliveGreen
+$legacy-green-medium      : #2A5B0B; // AMSLightGrassGreen
+$legacy-green-dark        : #042608; // AMSDarkGreen = #043808
+$legacy-olive-green-medium: #3D4E34;
+$legacy-olive-green-dark  : #404F32;
+$legacy-red               : #EA2A15; // AMSOrangeRed
+$legacy-blue              : #1C75BC;
+$legacy-spring-green-faint: #D4D688; // AMSMintGreen
+$legacy-spring-green-light: #9DA64A;
+$legacy-olive-green-light : #828A3D;
 
-$legacy-dark-green        : #3D4E34;
-$legacy-dark-green-light  : #404F32;
-$legacy-olive-green       : #73791C;
-$legacy-spring-green      : #CDD860;
-$legacy-spring-green-dark : #9DA64A;
+//colors
+$c0: #282828; //text
+$c0b: #565656; //lighter grey text
+$c1: #D4D688; //spring green
+$c2: #CDD860;
+$c3: #73791C;
+$c4: #2A5B0B; //main medium green
+$c5: #042608; //dark green
+$c6: #EA2A15; //AMS red
+$c7: #1C75BC; //link blue
+$c8: #828A3D;
+$c9: #ffffff;
 //------------------------
 
 $AMSOrangeRed       : rgb(234,42,21);                 //#ea2a15; -- fire engine red

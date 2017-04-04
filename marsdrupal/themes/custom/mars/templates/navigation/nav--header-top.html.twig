@@ -1,8 +1,7 @@
-<header{{ navbar_attributes.addClass(navbar_classes) }} id="topNavbar" role="navigation">
-    {% if not navbar_attributes.hasClass('container') %}
-    <div class="{{ container }}">
-        {% endif %}
+{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 
+<header{{ navbar_attributes.addClass(navbar_classes) }} id="topNavbar" role="navigation">
+    <div class="{{ container }}">
         {% if page.navigation %}
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavigation">
@@ -16,8 +15,5 @@
                 {{ page.navigation }}
             </div>
         {% endif %}
-
-        {% if not navbar_attributes.hasClass('container') %}
     </div>
-    {% endif %}
 </header>
