@@ -1,5 +1,5 @@
 {# Frontpage: Page Wrapper #}
-{% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
+{% set container = mars.settings.fluid_container ? 'container-fluid' : 'container' %}
 
 <div id="page" class="layout-container">
     {# Header #}
@@ -7,7 +7,7 @@
         {% if page.header %}
             {% block header %}
                 <header id="headerTop" role="banner">
-                    <div class="container">
+                    <div class="{{ container }}">
                         <div class="row">
                             <div class="col-sm-12" role="heading">
                                 {{ page.header }}
@@ -30,7 +30,7 @@
                 {# templates/navigation/nav-header-top.html.twig #}
                 {% include directory ~ '/templates/navigation/nav--header-top.html.twig' %}
                 {# templates/navigation/nav-header-bottom.html.twig #}
-                {% include directory ~ '/templates/navigation/nav--header-bottom.html.twig' %}
+                {#{% include directory ~ '/templates/navigation/nav--header-bottom.html.twig' %}#}
                 {# templates/navigation/nav-header-bottom.html.twig #}
                 {% include directory ~ '/templates/navigation/nav--breadcrumb.html.twig' %}
 
@@ -45,55 +45,59 @@
                 <div class="content-wrapper">
                     {# Content #}
                     {%
-                        set sub_content_classes = [
-                            'sub_content-section',
-                            page.sidebar_right ? 'col-sm-9',
-                            page.sidebar_right is empty ? 'col-sm-12'
+                        set sidebar_left_classes = [
+                            'content-left-sidebar',
+                            page.sidebar_right is empty ? 'col-md-4',
+                            page.sidebar_right ? 'col-md-3'
                         ]
                     %}
                     {%
                         set content_classes = [
-                            'content-section-main',
-                            page.sidebar_left ? 'col-sm-9',
-                            page.sidebar_left is empty ? 'col-sm-12'
+                            'content-section',
+                            (page.sidebar_left and page.sidebar_right is empty) or (page.sidebar_right and page.sidebar_left is empty ) ? 'col-md-8',
+                            page.sidebar_left is empty and page.sidebar_right is empty ? 'col-md-12',
+                            page.sidebar_left and page.sidebar_right ? 'col-md-6'
+                        ]
+                    %}
+                    {%
+                        set sidebar_right_classes = [
+                            'content-right-sidebar',
+                            page.sidebar_left is empty? 'col-md-4',
+                            page.sidebar_left ? 'col-md-3'
                         ]
                     %}
 
-                    <div class="row">
+                    {# Page Top #}
+                    {# Highlighted #}
+                    {% if page.highlighted %}
+                        {% block highlighted %}
+                            <div class="highlighted">{{ page.highlighted }}</div>
+                        {% endblock %}
+                    {% endif %}
+
+
+                    <div class="row main-content-section">
+
                         {% if page.sidebar_left %}
-                            <div class="col-sm-3">
+                            <div{{ attributes.addClass(sidebar_left_classes) }}>
                                 {{ page.sidebar_left }}
                             </div>
                         {% endif %}
 
-                        <div {{ content_attributes.addClass(content_classes) }}>
-                            {# Page Top #}
-                            {# Highlighted #}
-                            {% if page.highlighted %}
-                                {% block highlighted %}
-                                    <div class="highlighted">{{ page.highlighted }}</div>
-                                {% endblock %}
-                            {% endif %}
-
-                            <div class="row">
-                                <div {{ attributes.addClass(sub_content_classes) }}>
-                                    {# Content #}
-                                    {% block content %}
-                                    <div class="layout-content {{ sidebarClass }}">
-                                        {{ page.content }}
-                                        </div>{# /.layout-content #}
-                                    {% endblock %}
-                                </div>
-
-                                {% if page.sidebar_right %}
-                                    <div class="col-sm-3">
-                                        {{ page.sidebar_right }}
-                                    </div>
-                                {% endif %}
-                            </div>
-
-
+                        <div{{ attributes.removeClass(sidebar_left_classes).addClass(content_classes) }}>
+                            {# Content #}
+                            {% block content %}
+                            <div class="layout-content">
+                                {{ page.content }}
+                                </div>{# /.layout-content #}
+                            {% endblock %}
                         </div>
+
+                        {% if page.sidebar_right %}
+                            <div{{ attributes.removeClass(content_classes).addClass(sidebar_right_classes) }}>
+                                {{ page.sidebar_right }}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </main>

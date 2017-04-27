@@ -244,8 +244,10 @@
  *   );
  * @endcode
  */
-$config_directories = array();
-
+//$config_directories = array();
+$config_directories = array(
+    CONFIG_SYNC_DIRECTORY => 'sites/marsdrupal.dd/files/config_acqTmp-2017-01-12T17.06.48-0035',
+);
 /**
  * Settings:
  *
