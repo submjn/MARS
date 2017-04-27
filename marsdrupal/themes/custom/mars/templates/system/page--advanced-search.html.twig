@@ -1,4 +1,4 @@
-{# Frontpage: Page Wrapper #}
+{# Page: Advanced Search #}
 {% set container = mars.settings.fluid_container ? 'container-fluid' : 'container' %}
 
 <div id="page" class="layout-container">
@@ -102,19 +102,19 @@
 
                     <div class="row main-content-section">
 
-                        {% if page.sidebar_left %}
-                            <div{{ attributes.addClass(sidebar_left_classes) }}>
-                                {{ page.sidebar_left }}
-                            </div>
-                        {% endif %}
+                        <h1>Custom Advanced Search Page</h1>
+                        <h2>page--advanced-search.html.twig</h2>
+                        {#{% if page.sidebar_left %}#}
+                            {#<div{{ attributes.addClass(sidebar_left_classes) }}>#}
+                                {#{{ page.sidebar_left }}#}
+                            {#</div>#}
+                        {#{% endif %}#}
 
-                        
-
-                        {% if page.sidebar_right %}
-                            <div{{ attributes.removeClass(content_classes).addClass(sidebar_right_classes) }}>
-                                {{ page.sidebar_right }}
-                            </div>
-                        {% endif %}
+                        {#{% if page.sidebar_right %}#}
+                            {#<div{{ attributes.removeClass(content_classes).addClass(sidebar_right_classes) }}>#}
+                                {#{{ page.sidebar_right }}#}
+                            {#</div>#}
+                        {#{% endif %}#}
                     </div>
                 </div>
             </main>
