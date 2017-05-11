@@ -1,0 +1,83 @@
+.advanced-view {
+  margin-top: -20px;
+  .nav-tabs {
+    border-bottom: 5px solid $AMSGrassGreen;
+  }
+  .nav-tabs > li {
+    float: right!important;
+    border: none;
+    margin-bottom: 5px;
+    & > a {
+      border-radius: 0;
+      padding: 0;
+      border: 1px solid $gray-lighter;
+      font-size: 18px;
+      width: 38px;
+      color: $AMSDarkGreen;
+      line-height: 34px;
+      vertical-align: middle;
+      text-align: center;
+      i {
+        font-size: 18px;
+      }
+
+    }
+    &.active {
+      a, a:hover, a:focus {
+        background: $gray-lighter;
+        border: 1px solid $gray-lighter;
+      }
+
+    }
+    &.settings-tab {
+      a {
+        border: none;
+        margin-left: 10px;
+        border-left: 1px solid $gray-lighter;
+      }
+    }
+  }
+  .page-title-btn {
+    margin-bottom: -66px;
+    border-radius: 0;
+    background-color: $AMSGrassGreen;
+  }
+}
+.green-btn {
+  border-radius: 0;
+  background-color: $AMSGrassGreen;
+  color: #fff;
+}
+
+#mapView {
+  .form-inline {
+    padding: 10px 0;
+  }
+  .map-area {
+    height: 300px;
+    width: 100%;
+    background-color: $gray-light;
+    line-height: 300px;
+    vertical-align: middle;
+    text-align: center;
+    color: white;
+  }
+}
+
+#searchView {
+  .form-group {
+    padding: 10px 0;
+  }
+  label {
+    display: block;
+  }
+  select {
+    padding: 5px;
+    width: 100%;
+  }
+  .header {
+    border-bottom: 4px solid $AMSGrassGreen;
+    padding-bottom: 6px;
+    margin-top: 20px;
+  }
+}
