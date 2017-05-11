@@ -102,19 +102,27 @@
 
                     <div class="row main-content-section">
 
-                        <h1>Custom Newsroom Page</h1>
-                        <h2>page--newsroom.html.twig</h2>
-                        {#{% if page.sidebar_left %}#}
-                            {#<div{{ attributes.addClass(sidebar_left_classes) }}>#}
-                                {#{{ page.sidebar_left }}#}
-                            {#</div>#}
-                        {#{% endif %}#}
+                        {% if page.sidebar_left %}
+                            <div{{ attributes.addClass(sidebar_left_classes) }}>
+                                {{ page.sidebar_left }}
+                            </div>
+                        {% endif %}
 
-                        {#{% if page.sidebar_right %}#}
-                            {#<div{{ attributes.removeClass(content_classes).addClass(sidebar_right_classes) }}>#}
-                                {#{{ page.sidebar_right }}#}
-                            {#</div>#}
-                        {#{% endif %}#}
+                        <div{{ attributes.removeClass(sidebar_left_classes).addClass(content_classes) }}>
+                            {# Content #}
+                            {% block content %}
+                                <div class="layout-content">
+                                {#{{ page.content }}#}
+                                {% include directory ~ '/templates/partials/newsroom/blog-view.html.twig' %}
+                                </div>{# /.layout-content #}
+                            {% endblock %}
+                        </div>
+
+                        {% if page.sidebar_right %}
+                            <div{{ attributes.removeClass(content_classes).addClass(sidebar_right_classes) }}>
+                                {{ page.sidebar_right }}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </main>
