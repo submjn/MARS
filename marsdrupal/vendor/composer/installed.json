@@ -4889,5 +4889,48 @@
             "issues": "https://www.drupal.org/project/issues/views_geojson",
             "irc": "irc://irc.freenode.org/drupal-contribute"
         }
+    },
+    {
+        "name": "drupal/scroll_to_top",
+        "version": "dev-0.x",
+        "version_normalized": "dev-0.x",
+        "source": {
+            "type": "git",
+            "url": "https://git.drupal.org/project/scroll_to_top",
+            "reference": "fa2c0828719e212de21f04eed0c23c55e9bd9e79"
+        },
+        "require": {
+            "drupal/core": "~8.0"
+        },
+        "type": "drupal-module",
+        "extra": {
+            "branch-alias": {
+                "dev-0.x": "0.x-dev"
+            },
+            "drupal": {
+                "version": "8.x-0.x-dev",
+                "datestamp": "1452455339"
+            }
+        },
+        "installation-source": "source",
+        "notification-url": "https://packages.drupal.org/8/downloads",
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "acke",
+                "homepage": "https://www.drupal.org/user/765764"
+            },
+            {
+                "name": "tarekdj",
+                "homepage": "https://www.drupal.org/user/745218"
+            }
+        ],
+        "description": "Scroll to top module.",
+        "homepage": "https://www.drupal.org/project/scroll_to_top",
+        "support": {
+            "source": "http://cgit.drupalcode.org/scroll_to_top"
+        }
     }
 ]

@@ -148,3 +148,26 @@
     }
   }
 }
+
+.contact-view {
+   .nav-tabs {
+     border-bottom: 5px solid $AMSGrassGreen;
+     & > li {
+       margin-bottom: 0;
+       & > a {
+         border-radius: 0;
+         color: $gray-base;
+         margin: 0;
+         border: 0;
+       }
+       &.active {
+         a, a:hover, a:focus {
+           background: $AMSGrassGreen;
+           color: #fff;
+           border-radius: 0;
+         }
+
+       }
+     }
+   }
+}
