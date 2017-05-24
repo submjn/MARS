@@ -1,0 +1,17 @@
+change-log
+new
+- app
+- app-files
+-- .gitignore
+-- LICENSE
+-- package.json
+-- README.md
+-- config.js.dist
+-- e2e-tests
+
+- .bowerrc
+- .jshintrc
+- .travis.yml
+- bower.json
+- karma.conf.js
+
