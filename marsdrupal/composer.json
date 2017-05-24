@@ -10,7 +10,8 @@
         "drupal/chosen": "^2.3",
         "drupal/geofield": "^1.0@alpha",
         "drupal/views_geojson": "1.x-dev",
-        "drupal/scroll_to_top": "0.x-dev"
+        "drupal/scroll_to_top": "0.x-dev",
+        "drupal/restui": "^1.14"
     },
     "replace": {
         "drupal/core": "~8.3"
